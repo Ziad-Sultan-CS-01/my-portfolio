@@ -107,3 +107,77 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Welcome to Ziad Farag\'s Interactive Space!', 'info');
     }, 1000);
 });
+/* ==========================================================================
+   10. JS INTEGRATION STYLES (HEADER, TOASTS & GLOW)
+   ========================================================================== */
+
+/* تأثير الـ Header عند السكرول */
+.header.scrolled {
+    background: rgba(10, 12, 16, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+/* زر الموبايل لما القائمة تفتح */
+.nav-menu.open {
+    display: flex !important;
+    flex-direction: column;
+    animation: fadeInDown 0.3s ease forwards;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* نظام الـ Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: #161b26;
+    border-left: 4px solid var(--accent-cyan);
+    color: var(--text-main);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.toast i { color: var(--accent-cyan); font-size: 1.1rem; }
+.toast-error { border-left-color: #ff4a4a; }
+.toast-error i { color: #ff4a4a; }
+.toast-warning { border-left-color: #ffb700; }
+.toast-warning i { color: #ffb700; }
+.toast-info { border-left-color: var(--accent-violet); }
+.toast-info i { color: var(--accent-violet); }
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* تأثير الـ Interactive Card Glow Dynamic */
+.card {
+    position: relative;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border-radius: inherit;
+    background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 242, 254, 0.06), transparent 40%);
+    z-index: 1;
+    pointer-events: none;
+}
